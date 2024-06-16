@@ -23,20 +23,20 @@ public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
+        return httpSecurity
                 .csrf(csrf -> csrf.disable())  // Deshabilita la protección CSRF
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // Configura las sesiones sin estado
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/login")
-                        .permitAll()  // Permite el acceso sin autenticación a /login
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()  // Permite el acceso sin autenticación a /login
+                        .requestMatchers("/swagger-ui.html", "/v3/api-docs/**","/swagger-ui/**").permitAll()
                         .anyRequest()
                         .authenticated())  // Requiere autenticación para cualquier otra solicitud
                         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 //                        .anyRequest().permitAll());
                         .build();
 
-        return httpSecurity.build();
+//        return httpSecurity.build();
     }
 
     @Bean
