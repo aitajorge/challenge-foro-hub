@@ -4,6 +4,7 @@ import com.challenge.forohub.domain.infra.security.DatosJWTToken;
 import com.challenge.forohub.domain.infra.security.TokenService;
 import com.challenge.forohub.domain.usuarios.DatosAutenticacionUsuario;
 import com.challenge.forohub.domain.usuarios.Usuario;
+import com.challenge.forohub.domain.usuarios.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class AutenticacionCotroller {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
 
     @PostMapping
     public ResponseEntity autenticarUsuario(@RequestBody @Valid DatosAutenticacionUsuario datosAutenticacionUsuario){
@@ -36,4 +40,6 @@ public class AutenticacionCotroller {
         var JWTtoken = tokenService.generarToken((Usuario) usuarioAutenticado.getPrincipal());
         return ResponseEntity.ok(new DatosJWTToken(JWTtoken));
     }
+
+
 }
