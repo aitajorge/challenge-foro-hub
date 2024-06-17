@@ -18,11 +18,11 @@ public class SpringDocConfiguration {
                         .addSecuritySchemes("bearer-key",
                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
                 .info(new Info()
-                        .title("API Voll.med")
-                        .description("API Rest de la aplicación Voll.med, que contiene las funcionalidades de CRUD de médicos y pacientes, así como programación y cancelación de consultas.")
+                        .title("API Foro Hub - Challenge")
+                        .description("API Rest de la aplicación Challenge Foro Hub, que posibilita crear Tópicos, así como consultarlos, actualizarlos, listarlos y modificarlos.")
                         .contact(new Contact()
-                                .name("Equipo Backend")
-                                .email("backend@voll.med"))
+                                .name("jorge aita  Backend")
+                                .email("aitajorge@yahoo.com.ar"))
                         .license(new License()
                                 .name("Apache 2.0")
                                 .url("http://voll.med/api/licencia")));  }
